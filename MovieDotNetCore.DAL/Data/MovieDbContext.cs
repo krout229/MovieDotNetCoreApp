@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MovieDotNetCore.DAL.Data
 {
-    class MovieDbContext:DbContext
+    public class MovieDbContext:DbContext
     {
         public MovieDbContext(DbContextOptions<MovieDbContext> options) : base(options)
         {

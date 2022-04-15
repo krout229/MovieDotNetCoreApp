@@ -2,11 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MovieDotNetCore.DAL.Data;
+
 
 namespace MovieDotNetCore.DAL.Repositories
 {
-    class MovieRepository : IMovieRepository
+   public class MovieRepository : IMovieRepository
     {
+        private MovieDbContext _movieDbContext;
+        public MovieRepository(MovieDbContext movieDbContext)
+        {
+            _movieDbContext = movieDbContext;
+        }
         public string DeleteMovie(int MovieId)
         {
             return "Deleted";
@@ -25,6 +32,9 @@ namespace MovieDotNetCore.DAL.Repositories
 
         public string SaveMovie(MovieDetails movieDetails)
         {
+            //works as insert into
+            _movieDbContext.movieDetails.Add(movieDetails);
+            _movieDbContext.SaveChanges();
             return "Saved";
         }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MovieDotNetCore.DAL.Repositories
 {
-    interface IMovieRepository
+   public interface IMovieRepository
     {
         public string SaveMovie(MovieDetails movieDetails);
         public string UpdateMovie(MovieDetails movieDetails);

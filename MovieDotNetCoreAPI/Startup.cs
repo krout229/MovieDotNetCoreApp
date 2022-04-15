@@ -9,6 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MovieDotNetCore.DAL.Data;
+using Microsoft.EntityFrameworkCore;
+using MovieDotNetCore.DAL.Repositories;
+using MovieDotNetCore.BAL.Services;
 
 namespace MovieDotNetCoreAPI
 {
@@ -24,6 +28,11 @@ namespace MovieDotNetCoreAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
+            services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlConnection")));
+            services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddTransient<MovieDetailServices, MovieDetailServices>();
+            services.AddSwaggerGen();
             services.AddControllers();
         }
 
@@ -36,6 +45,12 @@ namespace MovieDotNetCoreAPI
             }
 
             app.UseRouting();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyMovieApp");
+            }
+            );
 
             app.UseAuthorization();
 
