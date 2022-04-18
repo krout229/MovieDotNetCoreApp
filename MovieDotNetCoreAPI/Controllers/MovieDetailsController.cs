@@ -18,31 +18,31 @@ namespace MovieDotNetCore.API.Controllers
         {
             _movieDetailsServices = movieDetailServices;
         }
-        [HttpPost]
+        [HttpPost("SaveMovies")]
         public IActionResult SaveMovie(MovieDetails movieDetails)
         {
             return Ok(_movieDetailsServices.SaveMovie(movieDetails));
         }
 
-        [HttpPost]
+        [HttpPost("DeleteMovies")]
         public IActionResult DeleteMovie(int MovieId)
         {
             return Ok(_movieDetailsServices.DeleteMovie(MovieId));
         }
 
-        [HttpPost]
+        [HttpPost("UpdateMovie")]
         public IActionResult UpdateMovie(MovieDetails movieDetails)
         {
             return Ok(_movieDetailsServices.UpdateMovie(movieDetails));
         }
 
-        [HttpGet]
+        [HttpGet("GetMovie")]
         public IActionResult GetMovie(int MovieId)
         {
             return Ok(_movieDetailsServices.GetMovie(MovieId));
         }
 
-        [HttpGet]
+        [HttpGet("GetAllMovies")]
         public List<MovieDetails> GetAllMovies()
         {
             return _movieDetailsServices.GetAllMovies();
