@@ -16,5 +16,21 @@ namespace MovieDotNetCore.BAL.Services
         {
             return _movieRepository.SaveMovie(movieDetails);
         }
+        public string DeleteMovie(int MovieId)
+        {
+            return _movieRepository.DeleteMovie(MovieId);
+        }
+        public string UpdateMovie(MovieDetails movieDetails)
+        {
+            return _movieRepository.UpdateMovie(movieDetails);
+        }
+        public MovieDetails GetMovie(int MovieId)
+        {
+            return _movieRepository.GetMovie(MovieId);
+        }
+        public List<MovieDetails> GetAllMovies()
+        {
+            return _movieRepository.GetAllMovies();
+        }
     }
 }
