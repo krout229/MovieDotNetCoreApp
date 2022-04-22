@@ -1,0 +1,44 @@
+﻿@model MovieDotNetCore.Entity.MovieDetails;
+@{
+    ViewData["Title"] = "SaveMovie";
+}
+
+<h2>SaveMovie</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label>Movie Name</label>
+        <input type="text" value="" asp-for="MovieName" class="form-control" required/>
+    </div>
+    <div class="form-group">
+        <label>Movie Genre</label>
+        <input type="text" value="" asp-for="MovieGenre" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Director</label>
+        <input type="text" value="" asp-for="Director" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="text" value="" asp-for="Price" class="form-control" />
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <input type="submit" value="Reset" class="btn btn-primary" />
+
+<hr />
+<div>
+    @{
+        if (@ViewBag.status == "Ok")
+        {
+            <div class="alert alert-success">@ViewBag.message</div>
+        }
+        else if (@ViewBag.status == "Error")
+        {
+            <div class="alert alert-danger">@ViewBag.message</div>
+        }
+    }
+
+</div>
+ }

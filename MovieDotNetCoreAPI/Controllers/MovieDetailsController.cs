@@ -18,7 +18,7 @@ namespace MovieDotNetCore.API.Controllers
         {
             _movieDetailsServices = movieDetailServices;
         }
-        [HttpPost("SaveMovies")]
+        [HttpPost("SaveMovie")]
         public IActionResult SaveMovie(MovieDetails movieDetails)
         {
             return Ok(_movieDetailsServices.SaveMovie(movieDetails));
